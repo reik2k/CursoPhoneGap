@@ -9,18 +9,46 @@ function init(){
 }
 
 function onDeviceReady(){
-    document.getElementById("deviceName").innerHTML
-        = device.name; 
-    document.getElementById("version").innerHTML
-        = device.phonegap; 
-    document.getElementById("mobilePlatform").innerHTML
-        = device.platform; 
-    document.getElementById("platformVersion").innerHTML
-        = device.version; 
-    document.getElementById("uuid").innerHTML
-        = device.uuid;
+
+    //callSettings();
     //checkConnection();
+    document.addEventListener("resume",onResume,false);
 }
+function onResume()
+{
+    alert("onResume");
+}
+function navigator(destination)
+{
+    switch(destination)
+    {
+    case 1:  
+    {
+       var ref = 
+           window.open(
+                encodeURI('http://www.google.es'),
+                '_blank',
+                'location=yes,transitionstyle=fliphorizontal');
+       // close InAppBrowser after 5 seconds
+         setTimeout(function() {
+             ref.close();
+         }, 5000);
+         break;
+    }
+    case 2:
+    {
+        var today = new Date();
+       document.getElementById("time").innerHTML
+        = today; 
+        break;
+    }
+    default:
+        alert('default');
+    }
+    
+}
+
+
 function checkConnection() 
 {
     var networkState = navigator.network.connection.type;
@@ -35,4 +63,22 @@ function checkConnection()
     states[Connection.NONE]     = 'Sin conexión';
 
     alert('Tipo de conexión: ' + states[networkState]);
+}
+
+function callSettings()
+{
+    var div = document.getElementById("example1");
+    
+    div.style.display= 'block';
+    
+    document.getElementById("deviceName").innerHTML
+        = device.name; 
+    document.getElementById("version").innerHTML
+        = device.phonegap; 
+    document.getElementById("mobilePlatform").innerHTML
+        = device.platform; 
+    document.getElementById("platformVersion").innerHTML
+        = device.version; 
+    document.getElementById("uuid").innerHTML
+        = device.uuid;
 }
