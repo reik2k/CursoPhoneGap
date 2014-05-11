@@ -13,10 +13,15 @@ function onDeviceReady(){
     //callSettings();
     //checkConnection();
     document.addEventListener("resume",onResume,false);
+    document.addEventListener("online",isOnline,false);
 }
 function onResume()
 {
     alert("onResume");
+}
+function isOnline()
+{
+    alert("isOnline");
 }
 function navigator(destination)
 {
@@ -30,9 +35,10 @@ function navigator(destination)
                 '_blank',
                 'location=yes,transitionstyle=fliphorizontal');
        // close InAppBrowser after 5 seconds
-         setTimeout(function() {
-             ref.close();
-         }, 5000);
+       setTimeout(function() {
+          ref.close();
+       }, 5000);
+         
          break;
     }
     case 2:
