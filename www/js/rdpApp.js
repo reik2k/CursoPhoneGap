@@ -4,56 +4,17 @@
  * and open the template in the editor.
  */
 /** Called when browser load this page*/
-function init(){
+function init()
+{
    document.addEventListener("deviceready", onDeviceReady, false);
 }
 
-function onDeviceReady(){
+function onDeviceReady()
+{
 
-    //callSettings();
-    //checkConnection();
-    document.addEventListener("resume",onResume,false);
-    document.addEventListener("online",isOnline,false);
-}
-function onResume()
-{
-    alert("onResume");
-}
-function isOnline()
-{
-    alert("isOnline");
-}
-function navigator(destination)
-{
-    switch(destination)
-    {
-    case 1:  
-    {
-       var ref = 
-           window.open(
-                encodeURI('http://www.google.es'),
-                '_blank',
-                'location=yes,transitionstyle=fliphorizontal');
-       // close InAppBrowser after 5 seconds
-       setTimeout(function() {
-          ref.close();
-       }, 5000);
-         
-         break;
-    }
-    case 2:
-    {
-        var today = new Date();
-       document.getElementById("time").innerHTML
-        = today; 
-        break;
-    }
-    default:
-        alert('default');
-    }
+    
     
 }
-
 
 function checkConnection() 
 {
@@ -87,4 +48,59 @@ function callSettings()
         = device.version; 
     document.getElementById("uuid").innerHTML
         = device.uuid;
+}
+
+function callAlert()
+{
+  
+}
+function callback()
+{
+    if (true)
+    {
+        alert('notification OK!');
+    }
+}
+
+function navigator(destination)
+{
+    switch(destination)
+    {
+    case 1:  
+    {
+       var ref = window.open(   encodeURI('http://www.google.es'),
+                                '_blank',
+                                'location=yes');
+       // close InAppBrowser after 5 seconds
+       setTimeout(
+            function() 
+            {
+                ref.close();
+                alert('5s');
+            }, 5000);
+         
+         break;
+    }
+    case 2:
+    {
+        var today = new Date();
+        document.getElementById("time").innerHTML    =   today; 
+        
+        break;
+    }
+    case 3:
+    {
+        
+        navigator.notification.alert(
+                'mensage',
+                callback,
+                'title',
+                'botonOK'
+                );
+        break;
+    }
+    default:
+        alert('default');
+    }
+    
 }

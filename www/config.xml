@@ -12,6 +12,7 @@
     <feature name="Accelerometer">
         <param name="ios-package" value="CDVAccelerometer" />
     </feature>
-    <!--Cargar El Safari-->
-    <plugin name="InAppBrowser" value="CDVInAppBrowser" />
+    <feature name="Notification">
+        <param name="ios-package" value="CDVNotification" />
+    </feature>
 </widget>
