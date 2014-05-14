@@ -21,8 +21,7 @@
                 "<feature name=\"Globalization\"><param name=\"ios-package\" value=\"CDVGlobalization\" /></feature>": 1,
                 "<feature name=\"Accelerometer\"><param name=\"ios-package\" value=\"CDVAccelerometer\" /></feature>": 1,
                 "<feature name=\"Notification\"><param name=\"ios-package\" value=\"CDVNotification\" /></feature>": 1,
-                "<feature name=\"Compass\"><param name=\"ios-package\" value=\"CDVCompass\" /></feature>": 1,
-                "<feature name=\"Media\"><param name=\"ios-package\" value=\"CDVSound\" /></feature>": 1
+                "<feature name=\"Compass\"><param name=\"ios-package\" value=\"CDVCompass\" /></feature>": 1
             }
         },
         "framework": {
@@ -102,9 +101,6 @@
             "PACKAGE_NAME": "com.coolappz.RDPApp"
         },
         "org.apache.cordova.device-orientation": {
-            "PACKAGE_NAME": "com.coolappz.RDPApp"
-        },
-        "org.apache.cordova.media": {
             "PACKAGE_NAME": "com.coolappz.RDPApp"
         }
     },
