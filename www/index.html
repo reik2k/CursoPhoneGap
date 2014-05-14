@@ -25,33 +25,39 @@
         attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <meta name="viewport" content="user-scalable=no, initial-scale=1, 
               maximum-scale=1, minimum-scale=1, target-densitydpi=device-dpi" />
-        <!--link rel="stylesheet" type="text/css" href="css/index.css" /-->
+        <link rel="stylesheet" type="text/css" href="css/rdpAppStyle.css" >
         <title>RDPApp</title>
         
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/rdpApp.js"></script>
     </head>
-    <body onLoad="init()">
-        <h1>Menú</h1>
-        <table border="">
-            <tr>
-                <td>
-                    <input type="button" value="Google" onclick="navigator(1)"/>
-                </td>
-                <td></td> 
-            </tr>
-            <tr>
-                <td>
-                    <input type="button" value="Time" onclick="navigator(2)"/>
-                </td>
-                <td id="time"></td> 
-            </tr>
-            <tr>
-                <td>
-                    <input type="button" value="Alert1" onclick="navigator(3)"/>
-                </td>
-                <td></td> 
-            </tr>
-        </table>
+    <body onload="init()">
+        <div id ="example1">
+            <h1>Menú</h1>
+            <table border="">
+                <tr>
+                    <td>
+                        <input type="button" value="Google" 
+                               onclick="navigator(1)"/>
+                    </td>
+                    <td></td> 
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" value="Time" 
+                               onclick="navigator(2)"/>
+                    </td>
+                    <td id="time"></td> 
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" value="Alert1" 
+                               onclick="navigator(3)"/>
+                    </td>
+                    <td></td> 
+                </tr>
+            </table>
+        </div>
+        <div id="example2"></div>
     </body>
 </html>
