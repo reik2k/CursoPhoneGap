@@ -1,6 +1,6 @@
 // We use an "Immediate Function" to initialize the application to avoid leaving anything behind in the global scope
 (function () {
-
+    
     /* ---------------------------------- Local Variables ---------------------------------- */
     var adapter = new LocalStorageAdapter();
     adapter.initialize().done(function () {
@@ -10,9 +10,21 @@
     /* --------------------------------- Event Registration -------------------------------- */
     $('.search-key').on('keyup', findByName);
     $('.help-btn').on('click', function() {
-        alert("Some help here...")
+        alert("Some help here...");
     });
-
+     document.addEventListener('deviceready', 
+        function () {
+            if (navigator.notification) { // Override default HTML alert with native dialog
+                window.alert = function (message) {
+                    navigator.notification.alert(
+                        message,    // message
+                        null,       // callback
+                        "Abel Pene", // title
+                        'OK'        // buttonName
+                    );
+                };
+            }
+       }, false);
 
     /* ---------------------------------- Local Functions ---------------------------------- */
     function findByName() {
@@ -28,25 +40,3 @@
     }
 
 }());
-
-function init()
-{
-            alert("Some help here...")
-
-    documet.addEventListener('deviceready',
-    function()
-    {
-        if (navigator.notification) 
-        {   // Override default HTML alert with native dialog
-            window.alert = function (message) 
-            {
-                navigator.notification.alert(
-                    message,    // message
-                    null,       // callback
-                    "Workshop", // title
-                    'OK'        // buttonName
-                );
-            };
-        }
-    });
-}
