@@ -6,7 +6,7 @@
     adapter.initialize().done(function () {
         console.log("Data adapter initialized");
     });
-
+    
     /* --------------------------------- Event Registration -------------------------------- */
     $('.search-key').on('keyup', findByName);
     $('.help-btn').on('click', function() {

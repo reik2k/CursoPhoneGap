@@ -1,6 +1,7 @@
 var WebSqlAdapter = function () {
 
     this.initialize = function () {
+        alert('prueba');
         var deferred = $.Deferred();
         this.db = window.openDatabase("EmployeeDemoDB", "1.0", "Employee Demo DB", 200000);
         this.db.transaction(
