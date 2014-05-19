@@ -19,7 +19,7 @@
                     navigator.notification.alert(
                         message,    // message
                         null,       // callback
-                        "Abel Pene", // title
+                        "Tutorial:Cordova", // title
                         'OK'        // buttonName
                     );
                 };
