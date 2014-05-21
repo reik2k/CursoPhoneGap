@@ -30,6 +30,19 @@
         }, false);
 
     /* ---------------------------------- Local Functions ---------------------------------- */
+    function renderHomeView() 
+    {
+        console.log("Ha entrado en renderHome");
+        var html =
+            "<h1>Directory</h1>" +
+            "<input class='search-key' type='search' placeholder='Enter name'/>" +
+            "<ul class='employee-list'></ul>";
+        $('body').html(html);
+        $('.search-key').on('keyup', findByName);
+        
+        console.log(html.toString());
+    }
+    
     function findByName() {
         adapter.findByName($('.search-key').val()).done(function (employees) {
             var l = employees.length;
@@ -41,5 +54,6 @@
             }
         });
     }
+    
 
 }());
