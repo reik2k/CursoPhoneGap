@@ -13,7 +13,8 @@
         alert("Some help here...");
     });
      document.addEventListener('deviceready', 
-        function () {
+        function () 
+        {
             if (navigator.notification) { // Override default HTML alert with native dialog
                 window.alert = function (message) {
                     navigator.notification.alert(
@@ -24,7 +25,9 @@
                     );
                 };
             }
-       }, false);
+            FastClick.attach(document.body);
+
+        }, false);
 
     /* ---------------------------------- Local Functions ---------------------------------- */
     function findByName() {
