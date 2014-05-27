@@ -5,6 +5,8 @@
     var adapter = new WebSqlAdapter();
     adapter.initialize().done(function () {
         console.log("Data adapter initialized");
+        renderHomeView();
+
     });
 
     /* --------------------------------- Event Registration -------------------------------- */
@@ -26,7 +28,6 @@
                 };
             }
             FastClick.attach(document.body);
-
         }, false);
 
     /* ---------------------------------- Local Functions ---------------------------------- */
@@ -34,13 +35,15 @@
     {
         console.log("Ha entrado en renderHome");
         var html =
+           "<br/><br/>\n\
+            <input class='help-btn' type='button' value='help'/>"+
             "<h1>Directory</h1>" +
             "<input class='search-key' type='search' placeholder='Enter name'/>" +
             "<ul class='employee-list'></ul>";
         $('body').html(html);
         $('.search-key').on('keyup', findByName);
         
-        console.log(html.toString());
+        console.log($('.help-btn'));
     }
     
     function findByName() {
