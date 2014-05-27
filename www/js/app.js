@@ -5,16 +5,19 @@
     var adapter = new WebSqlAdapter();
     adapter.initialize().done(function () {
         console.log("Data adapter initialized");
-        renderHomeView();
+        
+    renderHomeView();
 
     });
 
     /* --------------------------------- Event Registration -------------------------------- */
-    $('.search-key').on('keyup', findByName);
-    $('.help-btn').on('click', function() {
-        alert("Some help here...");
-    });
-     document.addEventListener('deviceready', 
+    function init()
+    {
+      
+      FastClick.attach(document.body);
+                  console.log("listener: ");
+
+      document.addEventListener('deviceready', 
         function () 
         {
             if (navigator.notification) { // Override default HTML alert with native dialog
@@ -27,23 +30,26 @@
                     );
                 };
             }
-            FastClick.attach(document.body);
-        }, false);
-
+        }, false); 
+        
+    }
     /* ---------------------------------- Local Functions ---------------------------------- */
     function renderHomeView() 
     {
-        console.log("Ha entrado en renderHome");
+        console.log("You are in function--> renderHomeView");
+        
         var html =
            "<br/><br/>\n\
-            <input class='help-btn' type='button' value='help'/>"+
+            <input class=\"help-btn\" type=\"button\" value=\"help\"/>"+
             "<h1>Directory</h1>" +
-            "<input class='search-key' type='search' placeholder='Enter name'/>" +
-            "<ul class='employee-list'></ul>";
+            "<input class=\"search-key\" type=\"search\" placeholder=\"Enter name\"/>" +
+            "<ul class=\"employee-list\"></ul>";
         $('body').html(html);
-        $('.search-key').on('keyup', findByName);
         
-        console.log($('.help-btn'));
+        $('.search-key').on('keyup', findByName);
+        $('.help-btn').on('click', function() {
+            alert("Some help here...");
+        });
     }
     
     function findByName() {
