@@ -1,8 +1,10 @@
+document.addEventListener('deviceready', deviceReady, false); 
+
 // We use an "Immediate Function" to initialize the application to avoid leaving anything behind in the global scope
 (function () {
     
     /* ---------------------------------- Local Variables ---------------------------------- */
-    var adapter = new WebSqlAdapter();
+    var adapter = new MemoryAdapter();
     adapter.initialize().done(function () {
         console.log("Data adapter initialized");
         
@@ -11,29 +13,39 @@
     });
 
     /* --------------------------------- Event Registration -------------------------------- */
-    function init()
-    {
-      
-      FastClick.attach(document.body);
-                  console.log("listener: ");
-
-      document.addEventListener('deviceready', 
-        function () 
-        {
-            if (navigator.notification) { // Override default HTML alert with native dialog
-                window.alert = function (message) {
-                    navigator.notification.alert(
-                        message,    // message
-                        null,       // callback
-                        "Tutorial:Cordova", // title
-                        'OK'        // buttonName
-                    );
-                };
-            }
-        }, false); 
-        
-    }
+    $('.help-btn').on('click', function() {
+            alert("Some help here...");
+        });        
+    
     /* ---------------------------------- Local Functions ---------------------------------- */
+    function deviceReady() 
+    {
+        FastClick.attach(document.body);
+        console.log("listener: "+ navigator.notification.toString());
+
+        if (navigator.notification) { // Override default HTML alert with native dialog
+            window.alert = function (message) {
+                navigator.notification.alert(
+                    message,    // message
+                    null,       // callback
+                    "Tutorial:Cordova", // title
+                    'OK'        // buttonName
+                );
+            };
+        }
+     }
+        
+    function findByName() {
+        adapter.findByName($('.search-key').val()).done(function (employees) {
+            var l = employees.length;
+            var e;
+            $('.employee-list').empty();
+            for (var i = 0; i < l; i++) {
+                e = employees[i];
+                $('.employee-list').append('<li><a href="#employees/' + e.id + '">' + e.firstName + ' ' + e.lastName + '</a></li>');
+            }
+        });
+    }
     function renderHomeView() 
     {
         console.log("You are in function--> renderHomeView");
@@ -47,22 +59,6 @@
         $('body').html(html);
         
         $('.search-key').on('keyup', findByName);
-        $('.help-btn').on('click', function() {
-            alert("Some help here...");
-        });
     }
-    
-    function findByName() {
-        adapter.findByName($('.search-key').val()).done(function (employees) {
-            var l = employees.length;
-            var e;
-            $('.employee-list').empty();
-            for (var i = 0; i < l; i++) {
-                e = employees[i];
-                $('.employee-list').append('<li><a href="#employees/' + e.id + '">' + e.firstName + ' ' + e.lastName + '</a></li>');
-            }
-        });
-    }
-    
 
 }());
