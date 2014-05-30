@@ -1,24 +1,18 @@
-document.addEventListener('deviceready', deviceReady, false); 
 
 // We use an "Immediate Function" to initialize the application to avoid leaving anything behind in the global scope
 (function () {
     
     /* ---------------------------------- Local Variables ---------------------------------- */
-    var adapter = new MemoryAdapter();
+    var adapter = new WebSqlAdapter();
+    
     adapter.initialize().done(function () {
         console.log("Data adapter initialized");
-        
-    renderHomeView();
-
+        renderHomeView(); 
     });
-
-    /* --------------------------------- Event Registration -------------------------------- */
-    $('.help-btn').on('click', function() {
-            alert("Some help here...");
-        });        
     
-    /* ---------------------------------- Local Functions ---------------------------------- */
-    function deviceReady() 
+    /* --------------------------------- Event Registration -------------------------------- */
+    document.addEventListener('deviceready', 
+    function () 
     {
         FastClick.attach(document.body);
         console.log("listener: "+ navigator.notification.toString());
@@ -33,7 +27,8 @@ document.addEventListener('deviceready', deviceReady, false);
                 );
             };
         }
-     }
+     }, false);
+    /* ---------------------------------- Local Functions ---------------------------------- */
         
     function findByName() {
         adapter.findByName($('.search-key').val()).done(function (employees) {
@@ -47,9 +42,7 @@ document.addEventListener('deviceready', deviceReady, false);
         });
     }
     function renderHomeView() 
-    {
-        console.log("You are in function--> renderHomeView");
-        
+    {        
         var html =
            "<br/><br/>\n\
             <input class=\"help-btn\" type=\"button\" value=\"help\"/>"+
@@ -59,6 +52,10 @@ document.addEventListener('deviceready', deviceReady, false);
         $('body').html(html);
         
         $('.search-key').on('keyup', findByName);
+        $('.help-btn').on('click', 
+        function() {
+            alert("Some help here...");
+        });
     }
 
 }());
