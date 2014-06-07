@@ -1,16 +1,3 @@
-
-// We use an "Immediate Function" to initialize the application to avoid leaving anything behind in the global scope
-(function () {
-    
-    /* ---------------------------------- Local Variables ---------------------------------- */
-    var adapter = new WebSqlAdapter();
-    
-    adapter.initialize().done(function () {
-        console.log("Data adapter initialized");
-        renderHomeView(); 
-    });
-    
-    /* --------------------------------- Event Registration -------------------------------- */
     document.addEventListener('deviceready', 
     function () 
     {
@@ -28,6 +15,20 @@
             };
         }
      }, false);
+
+// We use an "Immediate Function" to initialize the application to avoid leaving anything behind in the global scope
+(function () {
+    
+    /* ---------------------------------- Local Variables ---------------------------------- */
+    var adapter = new WebSqlAdapter();
+    
+    adapter.initialize().done(function () {
+        console.log("Data adapter initialized");
+        renderHomeView(); 
+    });
+    
+    /* --------------------------------- Event Registration -------------------------------- */
+     
     /* ---------------------------------- Local Functions ---------------------------------- */
         
     function findByName() {
@@ -56,6 +57,7 @@
         function() {
             alert("Some help here...");
         });
+       
     }
 
 }());
