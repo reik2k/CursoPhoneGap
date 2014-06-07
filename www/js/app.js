@@ -1,8 +1,7 @@
-    document.addEventListener('deviceready', 
+document.addEventListener('deviceready', 
     function () 
     {
         FastClick.attach(document.body);
-        console.log("listener: "+ navigator.notification.toString());
 
         if (navigator.notification) { // Override default HTML alert with native dialog
             window.alert = function (message) {
@@ -25,6 +24,7 @@
     adapter.initialize().done(function () {
         console.log("Data adapter initialized");
         renderHomeView(); 
+
     });
     
     /* --------------------------------- Event Registration -------------------------------- */
