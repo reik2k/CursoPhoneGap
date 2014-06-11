@@ -1,18 +1,49 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="assets/topcoat/css/topcoat-mobile-light.min.css" type="text/css"/>
+    <!--link rel="stylesheet" href="assets/topcoat/css/topcoat-mobile-light.min.css" type="text/css"/-->
+    <link href="assets/topcoat/css/topcoat-mobile-light.css" rel="stylesheet">
+    <link href="assets/css/styles.css" rel="stylesheet">
     <title>RDPapp</title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
 </head>
 <body>
-    
-    <!--Debug Weinre-->
+    <script id="home-tpl" type="text/x-handlebars-template">
+        <div class="topcoat-navigation-bar">
+            <div class="topcoat-navigation-bar__item center full">
+                <h1 class="topcoat-navigation-bar__title">
+                    Employee Directory
+                </h1>
+            </div>
+        </div>
+        <div class="search-bar">
+            <input  type="search" placeholder="search" 
+                    class="topcoat-search-input search-key">
+        </div>
+        <div class="topcoat-list__container">
+            <ul class="topcoat-list list employee-list"></ul>
+        </div>
+    </script>
+    <script id="employee-li-tpl" type="text/x-handlebars-template">
+        {{#.}}
+        <li class="topcoat-list__item">
+            <a href="#employees/{{id}}">
+                <img src="assets/pics/{{pic}}">
+                <p>{{firstName}} {{lastName}}</p>
+                <p>{{title}}</p>
+                <span class="chevron"></span>
+                <span class="count">{{reports}}</span>
+            </a>
+        </li>
+        {{/.}}
+    </script>
     <script src="cordova.js"></script>
+    <!--Debug Weinre-->
     <script src="http://localhost:8081/target/target-script-min.js"></script>
     <script src="lib/jquery.js"></script>
     <script src="lib/fastclick.js"></script>
+    <script src="lib/handlebars.js"></script>
 
     <!--Almacenamiento de DATOS: Se mantiene SQL-->
     <!--script src="js/adapters/localstorage-adapter.js"></script-->

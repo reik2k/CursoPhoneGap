@@ -15,6 +15,9 @@ document.addEventListener('deviceready',
         }
      }, false);
 
+var homeTpl = Handlebars.compile($("#home-tpl").html());
+var employeeLiTpl = Handlebars.compile($("#employee-li-tpl").html());
+
 // We use an "Immediate Function" to initialize the application to avoid leaving anything behind in the global scope
 (function () {
     
@@ -32,7 +35,7 @@ document.addEventListener('deviceready',
     /* ---------------------------------- Local Functions ---------------------------------- */
         
     function findByName() {
-        adapter.findByName($('.search-key').val()).done(function (employees) {
+        /*adapter.findByName($('.search-key').val()).done(function (employees) {
             var l = employees.length;
             var e;
             $('.employee-list').empty();
@@ -40,11 +43,16 @@ document.addEventListener('deviceready',
                 e = employees[i];
                 $('.employee-list').append('<li><a href="#employees/' + e.id + '">' + e.firstName + ' ' + e.lastName + '</a></li>');
             }
-        });
+        });*/
+        adapter.findByName($('.search-key').val()).done(
+            function (employees) 
+            {
+                $('.employee-list').html(employeeLiTpl(employees));
+            });
     }
     function renderHomeView() 
     {        
-        var html =
+        /*var html =
            "<br/><br/>\n\
             <input class=\"help-btn\" type=\"button\" value=\"help\"/>"+
             "<h1>Directory</h1>" +
@@ -56,7 +64,9 @@ document.addEventListener('deviceready',
         $('.help-btn').on('click', 
         function() {
             alert("Some help here...");
-        });
+        });*/
+        $('body').html(homeTpl());
+        $('.search-key').on('keyup', findByName);
        
     }
 
